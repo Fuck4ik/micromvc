@@ -1,2 +1,5 @@
-# micromvc
+# SkillUP
 Micro MVC
+
+- Controllers
+- Models
