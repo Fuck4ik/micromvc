@@ -3,10 +3,10 @@
  * @var $weatherByCity array
  */
 
-var_dump($weatherByCity);
+dump($weatherByCity);
 ?>
 
 <div class="container">
     <h1>Погода:</h1>
-    <p>.........</p>
+    <p><?= $weatherByCity['name'] ?>: <?= $weatherByCity['weather'][0]['main'] ?></p>
 </div>

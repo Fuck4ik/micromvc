@@ -5,6 +5,9 @@
 </head>
 <body>
 
+<?php require_once 'navbar.php'; ?>
+<?php require_once 'alerts.php'; ?>
+
 <?php require_once 'views/'.$view ?>
 
 </body>

@@ -30,6 +30,7 @@ class Controller
             if (isset($param['stack_learn'])) {
                 $user->setStackLearn($param['stack_learn']);
             }
+            Session::addFlash(Session::FLASH_SUCCESS, 'Пользователь успешно зарегистрирован');
         }
         $this->render('reg.php', 'Регистрация', [
             'user' => $user,
