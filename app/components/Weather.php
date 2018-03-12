@@ -32,8 +32,10 @@ class Weather
         if (file_exists($cacheFile) && time()-filemtime($cacheFile) <= 5) {
             $result = file_get_contents($cacheFile);
         } else {
-            $result = file_get_contents($url);
-            $this->cacheWeather($result, $cacheFile);
+            $result = @file_get_contents($url);
+            if ($result) {
+                $this->cacheWeather($result, $cacheFile);
+            }
         }
         return json_decode($result, true);
     }
