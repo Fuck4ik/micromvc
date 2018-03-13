@@ -152,4 +152,14 @@ class User
     {
         return $this->stackLearn;
     }
+
+    public function validate() {
+        if (!$this->getFirstname()) {
+            throw new Exception('Имя не указано');
+        } elseif (!$this->getLastname()) {
+            throw new Exception('Фамилия не указана');
+        }
+
+        return true;
+    }
 }

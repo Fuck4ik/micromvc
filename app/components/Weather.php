@@ -8,8 +8,11 @@ class Weather
 
     private $apiKey;
 
-    public function __construct($apiKey)
+    public function __construct($apiKey = null)
     {
+        if (!$apiKey) {
+            throw new Exception('Ключ API не передан');
+        }
         $this->apiKey = $apiKey;
     }
 

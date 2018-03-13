@@ -39,10 +39,16 @@ class Controller
 
     public function weatherAction() {
         $city = 'Saint Petersburg,ru';
-        $weather = new Weather('012e34537b328a78762f56bb13b7ac8c');
+        $weather1 = null;
+        try {
+            $weather = new Weather('012e34537b328a78762f56bb13b7ac8c');
+            $weather1 = $weather->getWeatherByCity($city);
+        } catch (Exception $e) {
+            Session::addFlash(Session::FLASH_DANGER, $e->getMessage());
+        }
 
         $this->render('weather.php', 'Погода', [
-            'weather1' => $weather->getWeatherByCity($city),
+            'weather1' => $weather1,
             //'weather2' => $weather->getWeatherByCoordinate(59.93863, 30.31413),
         ]);
     }
