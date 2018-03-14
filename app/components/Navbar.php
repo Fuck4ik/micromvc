@@ -1,5 +1,6 @@
 <?php
 
+namespace app\components;
 
 class Navbar
 {
@@ -12,6 +13,9 @@ class Navbar
         ],
         'weather' => [
             'title' => 'Погода',
+        ],
+        'test' => [
+            'title' => 'Тест',
         ],
     ];
 

@@ -1,7 +1,7 @@
 <?php
 /**
- * @var $this Controller
- * @var $user User
+ * @var $this \app\controllers\Controller
+ * @var $user \app\models\User
  * @var $time integer
  */
 ?>

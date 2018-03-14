@@ -1,14 +1,17 @@
 <?php
 
+require_once 'app/components/Autoloader.php';
 require_once 'vendor/autoload.php';
 
-require_once 'app/controllers/Controller.php';
-require_once 'app/components/Session.php';
-require_once 'app/components/Navbar.php';
-require_once 'app/components/File.php';
+use app\components\Session;
+use app\controllers\MainController;
+use app\components\Autoloader;
 
 define('PROJECT_NAME', 'SkillUP');
+define('ROOT_DIR', __DIR__);
+define('SEPARATOR', '\\');
 
+Autoloader::register();
 Session::start();
 
 $query = $_GET;
@@ -19,11 +22,16 @@ if (isset($query['act'])) {
     $method = $action.'Action';
 }
 
-$controller = new Controller();
-if ($method && method_exists($controller, $method)) {
-    Navbar::$active = $action;
+foreach (glob('app/controllers/[^ ]*Controller.php') as $controllerPath) {
+    $controllerPath = SEPARATOR.str_replace(['.php', '/'], ['', SEPARATOR], $controllerPath);
     // Метод точно есть
-    $controller->{$method}();
-} else {
-    $controller->homeAction();
+    if ($method && method_exists($controllerPath, $method)) {
+        $controller = new $controllerPath($action);
+        $controller->{$method}();
+        break;
+    }
+}
+
+if (!isset($controller)) {
+    (new MainController())->homeAction();
 }

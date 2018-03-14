@@ -1,5 +1,7 @@
 <?php
 
+namespace app\components;
+
 class Weather
 {
     const API_URL = 'http://api.openweathermap.org/data/2.5/';
@@ -11,7 +13,7 @@ class Weather
     public function __construct($apiKey = null)
     {
         if (!$apiKey) {
-            throw new Exception('Ключ API не передан');
+            throw new \Exception('Ключ API не передан');
         }
         $this->apiKey = $apiKey;
     }
