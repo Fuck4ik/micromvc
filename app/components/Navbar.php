@@ -8,14 +8,14 @@ class Navbar
         'home' => [
             'title' => 'Главная',
         ],
+        'posts' => [
+            'title' => 'Лента',
+        ],
         'reg' => [
             'title' => 'Регистрация',
         ],
         'weather' => [
             'title' => 'Погода',
-        ],
-        'test' => [
-            'title' => 'Тест',
         ],
     ];
 
