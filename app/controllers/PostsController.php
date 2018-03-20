@@ -8,11 +8,18 @@ class PostsController extends Controller
 {
     public function postsAction() {
         $db = DB::getInstance();
-        $stmt = $db->prepare("SELECT * FROM posts");
+        $stmt = $db->prepare("SELECT * FROM posts LIMIT 10");
         $posts = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $this->render('posts.php', 'Лента', [
             'posts' => $posts,
+        ]);
+    }
+    public function likeAction() {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'like_count' => rand(10, 50),
+            'is_like' => (bool)rand(0, 1),
         ]);
     }
 }
